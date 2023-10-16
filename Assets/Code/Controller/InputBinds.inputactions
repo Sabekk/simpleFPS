@@ -1,0 +1,34 @@
+{
+    "name": "InputBinds",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "2eefefbf-27b5-4bd4-8625-ef9b4852131e",
+            "actions": [
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "d4c55e46-86b1-463b-bf60-f08ea5527ccd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "69e63bdc-46d4-4b59-9d2b-637d42b4d40d",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
