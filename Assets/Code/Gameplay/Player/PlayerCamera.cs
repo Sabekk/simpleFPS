@@ -8,16 +8,23 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] float sensY;
     [SerializeField] Transform playerBody;
 
+    float xDir;
+    float yDir;
     float xRotation;
-
+	private void Awake () {
+        Events.Gameplay.Move.OnLookInDirection += LooknDirection;
+    }
+	private void OnDestroy () {
+        Events.Gameplay.Move.OnLookInDirection -= LooknDirection;
+    }
 	private void Start () {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 	}
 
 	private void Update () {
-        float mouseX = Input.GetAxisRaw ("Mouse X") * Time.deltaTime * sensX;
-        float mouseY = Input.GetAxisRaw ("Mouse Y") * Time.deltaTime * sensY;
+        float mouseX = xDir * Time.deltaTime * sensX;
+        float mouseY = yDir * Time.deltaTime * sensY;
 
         xRotation -= mouseY;
 
@@ -25,5 +32,10 @@ public class PlayerCamera : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler (xRotation, 0f, 0f);
         playerBody.Rotate (Vector3.up * mouseX);
+	}
+
+    void LooknDirection(Vector2 direction) {
+        xDir = direction.x;
+        yDir = direction.y;
 	}
 }
