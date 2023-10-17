@@ -9,6 +9,8 @@ public class PlayerEquipment : MonoBehaviour {
 	Weapon equipedWeapon;
 	int currentWeaponId;
 
+	public Weapon EquipedWeapon => equipedWeapon;
+
 	private void Awake () {
 		weapons = new Dictionary<int, Weapon> ();
 		Events.Gameplay.Eq.OnAddWeapon += AddWeapon;
@@ -59,6 +61,7 @@ public class PlayerEquipment : MonoBehaviour {
 		if (equipedWeapon) {
 			equipedWeapon.OnUnequip ();
 			ObjectPool.Instance.ReturnToPool (equipedWeapon);
+			equipedWeapon = null;
 		}
 	}
 	void SwitchWeapon () {

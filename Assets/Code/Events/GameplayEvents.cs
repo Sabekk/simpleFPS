@@ -1,11 +1,13 @@
 using UnityEngine;
 
 public class GameplayEvents {
+	public Moving Move { get; private set; } = new Moving ();
+	public Equipment Eq { get; private set; } = new Equipment ();
+	public WeaponAction Weapon { get; private set; } = new WeaponAction ();
+
 	/// <summary>
 	/// Events of player moving
 	/// </summary>
-	public Moving Move { get; private set; } = new Moving ();
-	public Equipment Eq { get; private set; } = new Equipment ();
 	public class Moving {
 		/// <summary>
 		/// Called when player jump
@@ -44,5 +46,18 @@ public class GameplayEvents {
 		/// Called when player switching to previous weapon
 		/// </summary>
 		public Events.Event OnSwitchToPreviousWeapon = new Events.Event ();
+	}
+	/// <summary>
+	/// Called when player using weapon
+	/// </summary>
+	public class WeaponAction {
+		/// <summary>
+		/// Called when player start or stop shooting
+		/// </summary>
+		public Events.Event<bool> OnShoting = new Events.Event<bool> ();
+		/// <summary>
+		/// Called when player reloading weapon
+		/// </summary>
+		public Events.Event OnReload = new Events.Event ();
 	}
 }

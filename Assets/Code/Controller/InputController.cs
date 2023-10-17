@@ -82,4 +82,11 @@ public class InputController : MonoBehaviour, InputBinds.IPlayerActions {
 		if (context.started)
 			Events.Gameplay.Eq.OnSwitchToPreviousWeapon.Invoke ();
 	}
+
+	public void OnShot (InputAction.CallbackContext context) {
+		if (context.started)
+			Events.Gameplay.Weapon.OnShoting.Invoke (true);
+		if (context.canceled)
+			Events.Gameplay.Weapon.OnShoting.Invoke (false);
+	}
 }

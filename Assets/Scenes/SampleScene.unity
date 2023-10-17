@@ -666,6 +666,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 78520273}
     m_Modifications:
+    - target: {fileID: 4867835953020708716, guid: 0f2abcc5a449d44449b360f469e4cafa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 9094771982643943542, guid: 0f2abcc5a449d44449b360f469e4cafa, type: 3}
       propertyPath: m_Name
       value: Player

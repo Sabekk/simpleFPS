@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Prop : MonoBehaviour {
+public class Prop : MonoBehaviour, IDamageable {
 	[SerializeField] MaterialData materialData;
 
 	List<ActionAfterDeath> actions;
 	MaterialData.Type materialType;
 	float durability;
 	public MaterialData.Type Type => materialType;
-	public float Durability { 
+	public float Durability {
 		get { return durability; }
 		set { durability = value; }
 	}
@@ -37,5 +37,12 @@ public class Prop : MonoBehaviour {
 		foreach (var action in actions) {
 			action.Activate ();
 		}
+	}
+
+	public void TakeDamage (float damage) {
+		Durability -= damage;
+		Debug.Log (Durability);
+		if (Durability < 0)
+			Destroy (gameObject);
 	}
 }

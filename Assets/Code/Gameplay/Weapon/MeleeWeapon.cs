@@ -5,6 +5,10 @@ public class MeleeWeapon : Weapon {
 	float durabilityLeft;
 	public override string WeaponName => meleeData.weaponName;
 	public override bool CanBeUsed => durabilityLeft > 0;
+	public override float Damage => meleeData.basicDamage;
+	public override float AttackRange => 0;
+
+
 	float MaxDurability => meleeData.durability;
 
 	public override void Initialize () {

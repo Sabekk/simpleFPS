@@ -125,6 +125,15 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shot"",
+                    ""type"": ""Button"",
+                    ""id"": ""d7febd2c-ab58-4745-92a1-2ed46b41b531"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -336,6 +345,28 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
                     ""action"": ""PreviousWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""49bfbec8-10fd-454a-9451-195b478aede0"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17d2398b-1cbb-4be3-9a0c-aef1af19dd19"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -355,6 +386,7 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
         m_Player_Weapon5 = m_Player.FindAction("Weapon5", throwIfNotFound: true);
         m_Player_NextWeapon = m_Player.FindAction("NextWeapon", throwIfNotFound: true);
         m_Player_PreviousWeapon = m_Player.FindAction("PreviousWeapon", throwIfNotFound: true);
+        m_Player_Shot = m_Player.FindAction("Shot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -425,6 +457,7 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Weapon5;
     private readonly InputAction m_Player_NextWeapon;
     private readonly InputAction m_Player_PreviousWeapon;
+    private readonly InputAction m_Player_Shot;
     public struct PlayerActions
     {
         private @InputBinds m_Wrapper;
@@ -440,6 +473,7 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
         public InputAction @Weapon5 => m_Wrapper.m_Player_Weapon5;
         public InputAction @NextWeapon => m_Wrapper.m_Player_NextWeapon;
         public InputAction @PreviousWeapon => m_Wrapper.m_Player_PreviousWeapon;
+        public InputAction @Shot => m_Wrapper.m_Player_Shot;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -482,6 +516,9 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
                 @PreviousWeapon.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPreviousWeapon;
                 @PreviousWeapon.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPreviousWeapon;
                 @PreviousWeapon.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPreviousWeapon;
+                @Shot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
+                @Shot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
+                @Shot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -519,6 +556,9 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
                 @PreviousWeapon.started += instance.OnPreviousWeapon;
                 @PreviousWeapon.performed += instance.OnPreviousWeapon;
                 @PreviousWeapon.canceled += instance.OnPreviousWeapon;
+                @Shot.started += instance.OnShot;
+                @Shot.performed += instance.OnShot;
+                @Shot.canceled += instance.OnShot;
             }
         }
     }
@@ -536,5 +576,6 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
         void OnWeapon5(InputAction.CallbackContext context);
         void OnNextWeapon(InputAction.CallbackContext context);
         void OnPreviousWeapon(InputAction.CallbackContext context);
+        void OnShot(InputAction.CallbackContext context);
     }
 }
