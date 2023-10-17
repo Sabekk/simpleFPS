@@ -4,27 +4,31 @@ using UnityEngine;
 
 [RequireComponent (typeof (CharacterController))]
 public class PlayerController : MonoBehaviour {
+	
 	[SerializeField] float walkSpeed;
 	[SerializeField] float runSpeed;
 	[SerializeField] float jumpPower;
 	[SerializeField] float gravity;
 
-	Vector2 direction;
-	bool isRuning;
 	CharacterController characterController;
+	PlayerEquipment equipment;
+	bool isRuning;
+	Vector2 direction = Vector3.zero;
 	Vector3 moveDirection = Vector3.zero;
 	Vector3 velocity = Vector3.zero;
 
 	private void Awake () {
 		characterController = GetComponent<CharacterController> ();
+		equipment = GetComponent<PlayerEquipment> ();
 		Events.Gameplay.Move.OnJump += Jump;
 		Events.Gameplay.Move.OnMoveInDirection += MoveInDirection;
 		Events.Gameplay.Move.OnSprint += Sprint;
+		
 	}
 	private void OnDestroy () {
 		Events.Gameplay.Move.OnJump -= Jump;
 		Events.Gameplay.Move.OnMoveInDirection -= MoveInDirection;
-		Events.Gameplay.Move.OnSprint += Sprint;
+		Events.Gameplay.Move.OnSprint -= Sprint;
 	}
 	private void Update () {
 		MovePlayer ();

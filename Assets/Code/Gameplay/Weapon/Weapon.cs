@@ -11,7 +11,7 @@ public abstract class Weapon : MonoBehaviour, ObjectPool.IPoolable {
 	public abstract void Use ();
 	public virtual void OnEquip () {
 		transform.localPosition = Vector3.zero;
-		transform.rotation = Quaternion.identity;
+		transform.localRotation = Quaternion.identity;
 	}
 
 	public virtual void OnUnequip () {
