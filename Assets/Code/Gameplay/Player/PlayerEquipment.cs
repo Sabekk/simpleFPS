@@ -73,6 +73,7 @@ public class PlayerEquipment : MonoBehaviour {
 			weapons[currentWeaponId] = newWeapon;
 			EquipWeapon (newWeapon);
 		}
+		Events.Gameplay.Eq.OnWeaponSwitched.Invoke ();
 	}
 	void SetCurrentWeapon (int id) {
 		currentWeaponId = id;

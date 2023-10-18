@@ -134,6 +134,15 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""745837db-25c3-49c3-8c4e-a086db85c684"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -367,6 +376,28 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
                     ""action"": ""Shot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8f93312-1c5b-4f42-8d17-706ee66093a7"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2cb954e3-6126-469b-8d2b-179269481ce4"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -387,6 +418,7 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
         m_Player_NextWeapon = m_Player.FindAction("NextWeapon", throwIfNotFound: true);
         m_Player_PreviousWeapon = m_Player.FindAction("PreviousWeapon", throwIfNotFound: true);
         m_Player_Shot = m_Player.FindAction("Shot", throwIfNotFound: true);
+        m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -458,6 +490,7 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_NextWeapon;
     private readonly InputAction m_Player_PreviousWeapon;
     private readonly InputAction m_Player_Shot;
+    private readonly InputAction m_Player_Reload;
     public struct PlayerActions
     {
         private @InputBinds m_Wrapper;
@@ -474,6 +507,7 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
         public InputAction @NextWeapon => m_Wrapper.m_Player_NextWeapon;
         public InputAction @PreviousWeapon => m_Wrapper.m_Player_PreviousWeapon;
         public InputAction @Shot => m_Wrapper.m_Player_Shot;
+        public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -519,6 +553,9 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
                 @Shot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
                 @Shot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
                 @Shot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShot;
+                @Reload.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -559,6 +596,9 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
                 @Shot.started += instance.OnShot;
                 @Shot.performed += instance.OnShot;
                 @Shot.canceled += instance.OnShot;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
             }
         }
     }
@@ -577,5 +617,6 @@ public partial class @InputBinds : IInputActionCollection2, IDisposable
         void OnNextWeapon(InputAction.CallbackContext context);
         void OnPreviousWeapon(InputAction.CallbackContext context);
         void OnShot(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
 }

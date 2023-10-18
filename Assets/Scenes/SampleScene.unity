@@ -266,7 +266,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.6
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -340,6 +340,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1409763075}
+  - component: {fileID: 1409763079}
   - component: {fileID: 1409763078}
   - component: {fileID: 1409763077}
   - component: {fileID: 1409763076}
@@ -429,6 +430,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409763074}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1409763079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409763074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218fe1a4a23969241b190d668f486644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialType: 4
 --- !u!1 &1596985290
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +500,21 @@ MonoBehaviour:
   - name: gunWeapon_rilfe2
     prefab: {fileID: 2336555170174120158, guid: 41b1038c4481a854092ac3410e44f57d, type: 3}
     size: 1
+  - name: shotEffect_gunShot
+    prefab: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
+    size: 5
+  - name: bulletImpact_wood
+    prefab: {fileID: 838005356786164160, guid: 8e589c708c875fe4298fdefe27ebd465, type: 3}
+    size: 10
+  - name: bulletImpact_steel
+    prefab: {fileID: 4229354841628038856, guid: 0476f058efa7b9a4d8bcf4449e325ec3, type: 3}
+    size: 10
+  - name: bulletImpact_sand
+    prefab: {fileID: 8205836621871863882, guid: 0248004b90e5d4446a6d0eaa6aa1404c, type: 3}
+    size: 10
+  - name: bulletImpact_stone
+    prefab: {fileID: 369581958283892664, guid: 5ccb0a49184dc1f4f9009648a85c0418, type: 3}
+    size: 10
 --- !u!1 &1660222839
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,7 +705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9094771982643943543, guid: 0f2abcc5a449d44449b360f469e4cafa, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9094771982643943543, guid: 0f2abcc5a449d44449b360f469e4cafa, type: 3}
       propertyPath: m_LocalPosition.x

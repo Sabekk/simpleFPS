@@ -46,6 +46,10 @@ public class GameplayEvents {
 		/// Called when player switching to previous weapon
 		/// </summary>
 		public Events.Event OnSwitchToPreviousWeapon = new Events.Event ();
+		/// <summary>
+		/// Called when player switched weapon
+		/// </summary>
+		public Events.Event OnWeaponSwitched = new Events.Event ();
 	}
 	/// <summary>
 	/// Called when player using weapon

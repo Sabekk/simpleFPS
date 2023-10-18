@@ -89,4 +89,8 @@ public class InputController : MonoBehaviour, InputBinds.IPlayerActions {
 		if (context.canceled)
 			Events.Gameplay.Weapon.OnShoting.Invoke (false);
 	}
+
+	public void OnReload (InputAction.CallbackContext context) {
+		Events.Gameplay.Weapon.OnReload.Invoke ();
+	}
 }

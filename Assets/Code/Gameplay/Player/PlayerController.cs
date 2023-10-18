@@ -20,8 +20,8 @@ public class PlayerController : MonoBehaviour {
 	Vector3 velocity = Vector3.zero;
 
 	RaycastHit rayHit;
-	IDamageable lastTarget;
-	Weapon currentWeapon => equipment != null ? equipment.EquipedWeapon : null;
+	IDamagable lastTarget;
+	Weapon CurrentWeapon => equipment != null ? equipment.EquipedWeapon : null;
 
 	private void Awake () {
 		characterController = GetComponent<CharacterController> ();
@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour {
 		Events.Gameplay.Move.OnMoveInDirection += MoveInDirection;
 		Events.Gameplay.Move.OnSprint += Sprint;
 		Events.Gameplay.Weapon.OnShoting += Shoting;
+		Events.Gameplay.Weapon.OnReload += Reload;
+		Events.Gameplay.Eq.OnWeaponSwitched += SwitchedWeapon;
 
 	}
 	private void OnDestroy () {
@@ -37,6 +39,8 @@ public class PlayerController : MonoBehaviour {
 		Events.Gameplay.Move.OnMoveInDirection -= MoveInDirection;
 		Events.Gameplay.Move.OnSprint -= Sprint;
 		Events.Gameplay.Weapon.OnShoting -= Shoting;
+		Events.Gameplay.Weapon.OnReload -= Reload;
+		Events.Gameplay.Eq.OnWeaponSwitched -= SwitchedWeapon;
 	}
 	private void Update () {
 		MovePlayer ();
@@ -55,14 +59,21 @@ public class PlayerController : MonoBehaviour {
 
 	void TryShoot () {
 		if (isShoting) {
-			if (currentWeapon != null && currentWeapon.CanBeUsed) {
-				currentWeapon.Use ();
-				if (Physics.Raycast (camera.transform.position, camera.transform.forward, out rayHit, currentWeapon.AttackRange, LayerMask.GetMask ("Damagable"))) {
-					IDamageable damagable = rayHit.collider.gameObject.GetComponent<IDamageable> ();
-					if (damagable != null) {
-						damagable.TakeDamage (currentWeapon.Damage, currentWeapon.IntendedType);
+			if (CurrentWeapon != null && CurrentWeapon.CanBeUsed) {
+				CurrentWeapon.Use ();
+				if (Physics.Raycast (camera.transform.position, camera.transform.forward, out rayHit, CurrentWeapon.AttackRange)) {
+					Target target = rayHit.collider.gameObject.GetComponent<Target> ();
+					if (target != null) {
+						if (target is IDamagable damageable)
+							damageable.TakeDamage (CurrentWeapon.Damage, CurrentWeapon.IntendedType);
+						if (target.Markable) {
+							CurrentWeapon.MakeMark (target.MaterialType, rayHit.point, Quaternion.LookRotation (rayHit.normal), out DamageMark mark);
+							if (mark)
+								target.AddMark (mark);
+						}
 					}
 				}
+
 			}
 		}
 	}
@@ -84,5 +95,16 @@ public class PlayerController : MonoBehaviour {
 
 	void Shoting (bool isShoting) {
 		this.isShoting = isShoting;
+	}
+
+	void SwitchedWeapon () {
+		isShoting = false;
+	}
+	void Reload () {
+		if (CurrentWeapon != null) {
+			isShoting = false;
+			if (CurrentWeapon is GunWeapon gun)
+				gun.Reload ();
+		}
 	}
 }

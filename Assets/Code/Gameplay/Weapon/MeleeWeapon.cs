@@ -3,6 +3,7 @@ using UnityEngine;
 public class MeleeWeapon : Weapon {
 	[SerializeField] protected MeleeWeaponData meleeData;
 	float durabilityLeft;
+	public override Type WeaponType => Type.melee;
 	public override string WeaponName => meleeData.weaponName;
 	public override bool CanBeUsed => durabilityLeft > 0;
 	public override float Damage => meleeData.basicDamage;

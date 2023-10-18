@@ -1,6 +1,8 @@
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour, ObjectPool.IPoolable {
+	public enum Type { melee, gun };
+	public abstract Type WeaponType { get; }
 	public abstract string WeaponName { get; }
 	public abstract bool CanBeUsed { get; }
 	public abstract float Damage { get; }
@@ -31,5 +33,17 @@ public abstract class Weapon : MonoBehaviour, ObjectPool.IPoolable {
 
 	public void AssignPoolable (ObjectPool.PoolObject poolable) {
 		Poolable = poolable;
+	}
+
+	public virtual void MakeMark (MaterialData.Type materialType, Vector3 point, Quaternion rotation, out DamageMark mark) {
+		mark = null;
+		string markName = GameplayManager.GetPropMarkName (WeaponType, materialType);
+		if (!string.IsNullOrEmpty (markName)) {
+			mark = ObjectPool.Instance.GetFromPool (markName).GetComponent<DamageMark> ();
+			if (mark != null) {
+				mark.transform.position = point;
+				mark.transform.rotation = rotation;
+			}
+		}
 	}
 }
