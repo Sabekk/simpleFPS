@@ -8,29 +8,41 @@ public class GunWeapon : Weapon {
 	public override string WeaponName => gunData.weaponName;
 	public override float Damage => gunData.basicDamage;
 	public override float AttackRange => gunData.range;
-	public override bool CanBeUsed => readyToUse && bulletsLeft > 0;
+	public override bool CanBeUsed => actualState == State.none && bulletsLeft > 0;
 	public override MaterialData.Type IntendedType => gunData.intendedType;
 	public string HoleEffect => holeEffect;
-	float MaxAmmo => gunData.maxAmmountOfBullets;
-	float Magazine => gunData.magazine;
+	int Magazine => gunData.magazine;
 
-
-	float bulletsLeft;
+	int ammunitionLeft;
+	int bulletsLeft;
 	float timer;
-	bool reloading;
 
 	public override void Initialize () {
 		bulletsLeft = gunData.magazine;
+		ammunitionLeft = gunData.maxAmmountOfBullets;
 	}
 
 	public override void Tick () {
 		base.Tick ();
-		if (!readyToUse) {
+
+		switch (actualState) {
+			case State.onUse:
 			timer += Time.deltaTime;
 			if (timer >= gunData.timeBetweenShots) {
 				timer = 0;
-				readyToUse = true;
+				actualState = State.none;
 			}
+			break;
+			case State.specialAction:
+			timer += Time.deltaTime;
+			if (timer >= gunData.reloadTime) {
+				timer = 0;
+				actualState = State.none;
+				OnReloaded ();
+			}
+			break;
+			default:
+			break;
 		}
 	}
 
@@ -38,19 +50,36 @@ public class GunWeapon : Weapon {
 		bulletsLeft--;
 		Debug.Log (WeaponName + " used, Bullets in magazine left: " + bulletsLeft + "/" + Magazine);
 		shotParticle.Play ();
-		readyToUse = false;
+		actualState = State.onUse;
 	}
 
 	public override void OnUnequip () {
 		base.OnUnequip ();
+		timer = 0;
 	}
 
 	public override void SetStatistics (Weapon weapon) {
-		if (weapon is GunWeapon gunWeapon)
+		if (weapon is GunWeapon gunWeapon) {
 			bulletsLeft = gunWeapon.bulletsLeft;
+			ammunitionLeft = gunWeapon.ammunitionLeft;
+		}
 	}
 
-	public void Reload () {
-		reloading = true;
+	public void StartReload () {
+		if (ammunitionLeft == 0)
+			return;
+		timer = 0;
+		actualState = State.specialAction;
+	}
+
+	void OnReloaded () {
+		int bulletsCount = 0;
+		if (ammunitionLeft - (Magazine - bulletsLeft) > 0)
+			bulletsCount = Magazine - bulletsLeft;
+		else
+			bulletsCount = ammunitionLeft;
+
+		ammunitionLeft -= bulletsCount;
+		bulletsLeft += bulletsCount;
 	}
 }

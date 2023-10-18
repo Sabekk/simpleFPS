@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour {
 		if (CurrentWeapon != null) {
 			isShoting = false;
 			if (CurrentWeapon is GunWeapon gun)
-				gun.Reload ();
+				gun.StartReload ();
 		}
 	}
 }

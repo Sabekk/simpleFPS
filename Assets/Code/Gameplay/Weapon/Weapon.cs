@@ -1,7 +1,9 @@
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour, ObjectPool.IPoolable {
+	public enum State { none, blocked, onUse, specialAction };
 	public enum Type { melee, gun };
+	protected State actualState;
 	public abstract Type WeaponType { get; }
 	public abstract string WeaponName { get; }
 	public abstract bool CanBeUsed { get; }
@@ -9,7 +11,6 @@ public abstract class Weapon : MonoBehaviour, ObjectPool.IPoolable {
 	public abstract float AttackRange { get; }
 	public abstract MaterialData.Type IntendedType { get; }
 	public ObjectPool.PoolObject Poolable { get; set; }
-	protected bool readyToUse;
 
 	private void Update () {
 		Tick ();
@@ -22,13 +23,13 @@ public abstract class Weapon : MonoBehaviour, ObjectPool.IPoolable {
 
 	}
 	public virtual void OnEquip () {
-		readyToUse = true;
+		actualState = State.none;
 		transform.localPosition = Vector3.zero;
 		transform.localRotation = Quaternion.identity;
 	}
 
 	public virtual void OnUnequip () {
-		readyToUse = false;
+		actualState = State.blocked;
 	}
 
 	public void AssignPoolable (ObjectPool.PoolObject poolable) {
