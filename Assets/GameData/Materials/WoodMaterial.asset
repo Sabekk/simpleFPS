@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 046f636dde045504a976cbadd2c99834, type: 3}
   m_Name: WoodMaterial
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   durability: 50

@@ -6,13 +6,11 @@ public class GunWeapon : Weapon {
 	public override float Damage => gunData.basicDamage;
 	public override float AttackRange => gunData.range;
 	public override bool CanBeUsed => readyToUse && bulletsLeft > 0;
+	public override MaterialData.Type IntendedType => gunData.intendedType;
 	float Magazine => gunData.magazine;
-
-
 	float bulletsLeft;
-
-	bool reloading;
 	float timer;
+	bool reloading;
 
 	public override void Initialize () {
 		bulletsLeft = gunData.magazine;

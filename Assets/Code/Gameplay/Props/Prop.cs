@@ -39,7 +39,10 @@ public class Prop : MonoBehaviour, IDamageable {
 		}
 	}
 
-	public void TakeDamage (float damage) {
+	public void TakeDamage (float damage, MaterialData.Type type) {
+		if (type != 0 && (type & materialType) == 0)
+			return;
+
 		Durability -= damage;
 		Debug.Log (Durability);
 		if (Durability < 0)

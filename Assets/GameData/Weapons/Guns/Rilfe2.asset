@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba1bfeaacb37484dac103287e78995d, type: 3}
   m_Name: Rilfe2
   m_EditorClassIdentifier: 
-  weaponName: 
-  basicDamage: 0
-  magazine: 0
-  maxAmmountOfBullets: 0
+  intendedType: 8
+  weaponName: Iron Beast
+  basicDamage: 30
+  magazine: 30
+  maxAmmountOfBullets: 90
+  bulletsPerShot: 1
+  timeBetweenShots: 0.15
+  range: 250
+  dispersion: 0.01
+  reloadTime: 4

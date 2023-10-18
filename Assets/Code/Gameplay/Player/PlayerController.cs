@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour {
 				if (Physics.Raycast (camera.transform.position, camera.transform.forward, out rayHit, currentWeapon.AttackRange, LayerMask.GetMask ("Damagable"))) {
 					IDamageable damagable = rayHit.collider.gameObject.GetComponent<IDamageable> ();
 					if (damagable != null) {
-						damagable.TakeDamage (currentWeapon.Damage);
+						damagable.TakeDamage (currentWeapon.Damage, currentWeapon.IntendedType);
 					}
 				}
 			}

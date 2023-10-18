@@ -7,6 +7,7 @@ public class MeleeWeapon : Weapon {
 	public override bool CanBeUsed => durabilityLeft > 0;
 	public override float Damage => meleeData.basicDamage;
 	public override float AttackRange => 0;
+	public override MaterialData.Type IntendedType => meleeData.intendedType;
 
 
 	float MaxDurability => meleeData.durability;

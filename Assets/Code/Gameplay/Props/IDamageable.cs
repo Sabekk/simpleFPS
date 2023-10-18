@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IDamageable
-{
-    public void TakeDamage (float damage);
+public interface IDamageable {
+	public void TakeDamage (float damage, MaterialData.Type type);
 }

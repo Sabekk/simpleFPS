@@ -5,6 +5,7 @@ public abstract class Weapon : MonoBehaviour, ObjectPool.IPoolable {
 	public abstract bool CanBeUsed { get; }
 	public abstract float Damage { get; }
 	public abstract float AttackRange { get; }
+	public abstract MaterialData.Type IntendedType { get; }
 	public ObjectPool.PoolObject Poolable { get; set; }
 	protected bool readyToUse;
 
