@@ -36,7 +36,7 @@ public class GameplayManager : Singleton<GameplayManager> {
 			case GunData.WeaponSize.rilfe:
 			return "RilfeShot";
 			case GunData.WeaponSize.shotgun:
-			return "ShotGunShot";
+			return "ShotgunShot";
 			default:
 			break;
 		}
