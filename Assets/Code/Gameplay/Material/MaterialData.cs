@@ -7,10 +7,10 @@ public class MaterialData : ScriptableObject {
 	[System.Flags]
 	public enum Type {
 		wood = 1,
-		glass = 2,
+		stone = 2,
 		steel = 4,
 		iron = 8,
-		plastic = 16
+		sand = 16
 	}
 	public Type type;
 	public float durability;

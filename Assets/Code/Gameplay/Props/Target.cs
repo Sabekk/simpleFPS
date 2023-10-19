@@ -20,6 +20,5 @@ public abstract class Target : MonoBehaviour {
 	public void ReturnAllMarks () {
 		for (int i = marks.Count - 1; i >= 0; i--)
 			ObjectPool.Instance.ReturnToPool (marks[i]);
-
 	}
 }
