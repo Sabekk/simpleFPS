@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IDamagable {
 	public void TakeDamage (float damage, MaterialData.Type type);
-	public void Death ();
+	public void Kill ();
 }

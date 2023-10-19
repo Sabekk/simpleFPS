@@ -2,23 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageMark : MonoBehaviour,ObjectPool.IPoolable
-{
+public class DamageMark : PoolableEffect {
 	Target parent;
-	public ObjectPool.PoolObject Poolable { get; set; }
-
-	private void OnParticleSystemStopped () {
-		parent.RemoveMark (this);
-		ObjectPool.Instance.ReturnToPool (this);
+	private void OnEnable () {
+		parent = null;
 	}
-
+	protected override void OnEffectFinish () {
+		parent.RemoveMark (this);
+	}
 	public void SetTargetParent (Target target) {
 		parent = target;
 		transform.SetParent (parent.transform);
 	}
-	public void AssignPoolable (ObjectPool.PoolObject poolable) {
-		Poolable = poolable;
-		parent = null;
-	}
-
 }

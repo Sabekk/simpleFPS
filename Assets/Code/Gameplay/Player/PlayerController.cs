@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour {
 	Vector3 velocity = Vector3.zero;
 
 	RaycastHit rayHit;
-	IDamagable lastTarget;
 	Weapon CurrentWeapon => equipment != null ? equipment.EquipedWeapon : null;
 
 	private void Awake () {
@@ -73,7 +72,6 @@ public class PlayerController : MonoBehaviour {
 						}
 					}
 				}
-
 			}
 		}
 	}

@@ -6,15 +6,9 @@ public class DamagableProp : Target, IDamagable {
 	[SerializeField] MaterialData materialData;
 	List<ActionAfterDeath> actions;
 	float durability;
-
-	public float Durability {
-		get { return durability; }
-		set { durability = value; }
-	}
-
 	public override MaterialData.Type MaterialType => materialData != null ? materialData.type : MaterialData.Type.wood;
 
-	public override bool Markable => Durability > 0;
+	public override bool Markable => durability > 0;
 
 	private void Awake () {
 		Initialize ();
@@ -24,32 +18,23 @@ public class DamagableProp : Target, IDamagable {
 	}
 
 	public void Initialize () {
-		if (materialData) {
-			durability = materialData.durability;
-		} else {
-			durability = 1;
-		}
-	}
-	public void OnDestroyProp () {
-
+		durability = materialData ? materialData.durability : 1;
 	}
 
 	public void TakeDamage (float damage, MaterialData.Type type) {
 		if (type != 0 && (type & MaterialType) == 0)
 			return;
 
-		Durability -= damage;
-		Debug.Log (Durability);
-		if (Durability < 0)
-			Death ();
+		durability -= damage;
+		if (durability < 0)
+			Kill ();
 	}
 
-	public void Death () {
+	public void Kill () {
 		ReturnAllMarks ();
-		foreach (var action in actions) {
+		foreach (var action in actions) 
 			action.Activate ();
-		}
-
+		
 		Destroy (gameObject);
 	}
 }
