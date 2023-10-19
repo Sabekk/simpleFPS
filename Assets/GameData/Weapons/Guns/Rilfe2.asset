@@ -16,10 +16,11 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: f8b7b4d7053d1344f850aeebe9800bd0, type: 3}
   intendedType: 8
   basicDamage: 30
+  timeBetweenAttack: 0
+  attackRange: 0
+  weaponSize: 0
   magazine: 30
   maxAmmountOfBullets: 90
   bulletsPerShot: 1
-  timeBetweenShots: 0.15
-  range: 250
   dispersion: 0.01
   reloadTime: 4

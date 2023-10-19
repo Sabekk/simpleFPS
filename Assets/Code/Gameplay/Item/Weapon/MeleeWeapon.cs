@@ -4,13 +4,8 @@ public class MeleeWeapon : Weapon {
 	[SerializeField] protected MeleeWeaponData meleeData;
 	float durabilityLeft;
 	public override Type WeaponType => Type.melee;
-	public override string ItemName => meleeData.itemName;
-	public override Sprite ItemSprite => meleeData.itemSprite;
+	public override string UsingAnimation => "";
 	public override bool CanBeUsed => durabilityLeft > 0;
-	public override float Damage => meleeData.basicDamage;
-	public override float AttackRange => 0;
-	public override MaterialData.Type IntendedType => meleeData.intendedType;
-
 
 	float MaxDurability => meleeData.durability;
 
@@ -25,6 +20,5 @@ public class MeleeWeapon : Weapon {
 
 	public override void Use () {
 		durabilityLeft--;
-		Debug.Log (ItemName + " used, Durability left: " + durabilityLeft + "/" + MaxDurability);
 	}
 }

@@ -3,12 +3,19 @@ using UnityEngine;
 public abstract class Weapon : Item, ObjectPool.IPoolable {
 	public enum State { none, blocked, onUse, specialAction };
 	public enum Type { melee, gun };
+
+	[SerializeField] protected WeaponData weaponData;
+
 	protected State actualState;
+	public override string ItemName => weaponData.itemName;
+	public override Sprite ItemSprite => weaponData.itemSprite;
 	public abstract Type WeaponType { get; }
+	public abstract string UsingAnimation { get; }
 	public abstract bool CanBeUsed { get; }
-	public abstract float Damage { get; }
-	public abstract float AttackRange { get; }
-	public abstract MaterialData.Type IntendedType { get; }
+	public virtual float Damage => weaponData.basicDamage;
+	public virtual MaterialData.Type IntendedType => weaponData.intendedType;
+	public virtual float AttackRange => weaponData.attackRange;
+	public virtual float TimeBetweenAttacks => weaponData.timeBetweenAttack;
 	public ObjectPool.PoolObject Poolable { get; set; }
 
 	private void Update () {

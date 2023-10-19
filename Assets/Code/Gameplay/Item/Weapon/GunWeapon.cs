@@ -1,30 +1,31 @@
 using UnityEngine;
 
 public class GunWeapon : Weapon {
-	[SerializeField] protected GunData gunData;
 	[SerializeField] ParticleSystem shotParticle;
-	[SerializeField] string holeEffect;
 
+	GunData gunData;
 	int ammunitionLeft;
 	int bulletsLeft;
 	float timer;
+	string shootingAnimation;
 
+	public override string UsingAnimation => shootingAnimation;
 	public override Type WeaponType => Type.gun;
-	public override string ItemName => gunData.itemName;
-	public override Sprite ItemSprite => gunData.itemSprite;
-	public override float Damage => gunData.basicDamage;
-	public override float AttackRange => gunData.range;
 	public override bool CanBeUsed => actualState == State.none && bulletsLeft > 0;
-	public override MaterialData.Type IntendedType => gunData.intendedType;
 	public string BulletsLeft => bulletsLeft.ToString ();
 	public string Magazine => gunData.magazine.ToString ();
 	public string AmmunitionLeft => ammunitionLeft.ToString ();
-	public string HoleEffect => holeEffect;
 	public int MagazineValue => gunData.magazine;
 
 	public override void Initialize () {
-		bulletsLeft = gunData.magazine;
-		ammunitionLeft = gunData.maxAmmountOfBullets;
+		if (weaponData is GunData gunData) {
+			this.gunData = gunData;
+			bulletsLeft = gunData.magazine;
+			ammunitionLeft = gunData.maxAmmountOfBullets;
+
+			shootingAnimation = GameplayManager.GetWeaponUsingTrigger (gunData.weaponSize);
+		} else
+			Debug.LogWarning ("Weapon wrong initialized! Check assigned data", this);
 	}
 
 	public override void Tick () {
@@ -33,7 +34,7 @@ public class GunWeapon : Weapon {
 		switch (actualState) {
 			case State.onUse:
 			timer += Time.deltaTime;
-			if (timer >= gunData.timeBetweenShots) {
+			if (timer >= TimeBetweenAttacks) {
 				timer = 0;
 				actualState = State.none;
 			}

@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] float jumpPower;
 	[SerializeField] float gravity;
 
+	Animator animator;
 	CharacterController characterController;
 	PlayerEquipment equipment;
 	bool isRuning;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour {
 	Weapon CurrentWeapon => equipment != null ? equipment.EquipedWeapon : null;
 
 	private void Awake () {
+		animator = GetComponent<Animator> ();
 		characterController = GetComponent<CharacterController> ();
 		equipment = GetComponent<PlayerEquipment> ();
 		Events.Gameplay.Move.OnJump += Jump;
@@ -72,6 +74,7 @@ public class PlayerController : MonoBehaviour {
 						}
 					}
 				}
+				animator.SetTrigger (CurrentWeapon.UsingAnimation);
 			}
 		}
 	}

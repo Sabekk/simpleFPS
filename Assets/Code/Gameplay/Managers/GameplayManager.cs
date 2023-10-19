@@ -28,4 +28,18 @@ public class GameplayManager : Singleton<GameplayManager> {
 		}
 		return "";
 	}
+
+	public static string GetWeaponUsingTrigger(GunData.WeaponSize weaponSize) {
+		switch (weaponSize) {
+			case GunData.WeaponSize.pistol:
+			return "GunShot";
+			case GunData.WeaponSize.rilfe:
+			return "RilfeShot";
+			case GunData.WeaponSize.shotgun:
+			return "ShotGunShot";
+			default:
+			break;
+		}
+		return "";
+	}
 }

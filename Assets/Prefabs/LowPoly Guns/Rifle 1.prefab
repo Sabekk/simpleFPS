@@ -48,9 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce02ba7ad703d06478f779f5a09acc8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunData: {fileID: 11400000, guid: d2d7b49e2de24c2428049c1e4deeb56b, type: 2}
+  weaponData: {fileID: 11400000, guid: d2d7b49e2de24c2428049c1e4deeb56b, type: 2}
   shotParticle: {fileID: 7734867960939714658}
-  holeEffect: 
 --- !u!33 &2537001884344466507
 MeshFilter:
   m_ObjectHideFlags: 0
