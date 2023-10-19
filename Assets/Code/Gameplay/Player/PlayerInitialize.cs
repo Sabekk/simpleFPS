@@ -17,7 +17,7 @@ public class PlayerInitialize : MonoBehaviour
 		foreach (var weaponName in allWeapons) {
 			Weapon newWeapon = ObjectPool.Instance.GetFromPool (weaponName).GetComponent<Weapon> ();
 			newWeapon.Initialize ();
-			Events.Gameplay.Eq.OnAddWeapon.Invoke (newWeapon);
+			Events.Gameplay.Eq.OnInitializeStartingWeapon.Invoke (newWeapon);
 		}
 	}
 }

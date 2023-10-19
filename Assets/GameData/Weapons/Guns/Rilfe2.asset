@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba1bfeaacb37484dac103287e78995d, type: 3}
   m_Name: Rilfe2
   m_EditorClassIdentifier: 
+  itemName: Iron beast
+  itemSprite: {fileID: 21300000, guid: f8b7b4d7053d1344f850aeebe9800bd0, type: 3}
   intendedType: 8
-  weaponName: Iron Beast
   basicDamage: 30
   magazine: 30
   maxAmmountOfBullets: 90

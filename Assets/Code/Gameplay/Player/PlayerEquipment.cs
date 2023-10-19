@@ -13,14 +13,14 @@ public class PlayerEquipment : MonoBehaviour {
 
 	private void Awake () {
 		weapons = new Dictionary<int, Weapon> ();
-		Events.Gameplay.Eq.OnAddWeapon += AddWeapon;
+		Events.Gameplay.Eq.OnInitializeStartingWeapon += AddWeapon;
 		Events.Gameplay.Eq.OnSwitchWeapon += SetCurrentWeapon;
 		Events.Gameplay.Eq.OnSwitchToNextWeapon += SwitchToNextWeapon;
 		Events.Gameplay.Eq.OnSwitchToPreviousWeapon += SwitchToPreviousWeapon;
 	}
 
 	private void OnDestroy () {
-		Events.Gameplay.Eq.OnAddWeapon -= AddWeapon;
+		Events.Gameplay.Eq.OnInitializeStartingWeapon -= AddWeapon;
 		Events.Gameplay.Eq.OnSwitchWeapon -= SetCurrentWeapon;
 		Events.Gameplay.Eq.OnSwitchToNextWeapon -= SwitchToNextWeapon;
 		Events.Gameplay.Eq.OnSwitchToPreviousWeapon -= SwitchToPreviousWeapon;
@@ -46,6 +46,7 @@ public class PlayerEquipment : MonoBehaviour {
 				currentWeaponId = emptySlot;
 			} else
 				ObjectPool.Instance.ReturnToPool (weapon);
+			Events.Gameplay.Eq.OnAddedNewWeapon.Invoke (weapon, emptySlot);
 		}
 	}
 	void RemoveWeapon (Weapon weapon) {
@@ -54,8 +55,12 @@ public class PlayerEquipment : MonoBehaviour {
 
 	void EquipWeapon (Weapon weapon) {
 		equipedWeapon = weapon;
-		equipedWeapon.transform.SetParent (handle);
-		equipedWeapon.OnEquip ();
+		if (weapon) {
+			equipedWeapon.transform.SetParent (handle);
+			equipedWeapon.OnEquip ();
+		}
+		Events.Gameplay.Eq.OnItemEquiped.Invoke (weapon, currentWeaponId);
+		Events.UI.ItemPreview.OnRefreshItemPreview.Invoke (weapon);
 	}
 	void UnequipWeapon () {
 		if (equipedWeapon) {
@@ -72,8 +77,10 @@ public class PlayerEquipment : MonoBehaviour {
 			newWeapon.SetStatistics (weapon);
 			weapons[currentWeaponId] = newWeapon;
 			EquipWeapon (newWeapon);
+		} else {
+			EquipWeapon (null);
 		}
-		Events.Gameplay.Eq.OnWeaponSwitched.Invoke ();
+
 	}
 	void SetCurrentWeapon (int id) {
 		currentWeaponId = id;

@@ -31,9 +31,9 @@ public class GameplayEvents {
 	/// </summary>
 	public class Equipment {
 		/// <summary>
-		/// Called when player picking new weapon
+		/// Called for initialzie starting weapon
 		/// </summary>
-		public Events.Event<Weapon> OnAddWeapon = new Events.Event<Weapon> ();
+		public Events.Event<Weapon> OnInitializeStartingWeapon = new Events.Event<Weapon> ();
 		/// <summary>
 		/// Called when player switching weapon to current id
 		/// </summary>
@@ -49,7 +49,11 @@ public class GameplayEvents {
 		/// <summary>
 		/// Called when player switched weapon
 		/// </summary>
-		public Events.Event OnWeaponSwitched = new Events.Event ();
+		public Events.Event<Item, int> OnItemEquiped = new Events.Event<Item, int> ();
+		/// <summary>
+		/// Called when player equiped new weapon
+		/// </summary>
+		public Events.Event<Weapon, int> OnAddedNewWeapon = new Events.Event<Weapon, int> ();
 	}
 	/// <summary>
 	/// Called when player using weapon

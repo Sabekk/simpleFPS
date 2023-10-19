@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 		Events.Gameplay.Move.OnSprint += Sprint;
 		Events.Gameplay.Weapon.OnShoting += Shoting;
 		Events.Gameplay.Weapon.OnReload += Reload;
-		Events.Gameplay.Eq.OnWeaponSwitched += SwitchedWeapon;
+		Events.Gameplay.Eq.OnItemEquiped += OnItemEquiped;
 
 	}
 	private void OnDestroy () {
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour {
 		Events.Gameplay.Move.OnSprint -= Sprint;
 		Events.Gameplay.Weapon.OnShoting -= Shoting;
 		Events.Gameplay.Weapon.OnReload -= Reload;
-		Events.Gameplay.Eq.OnWeaponSwitched -= SwitchedWeapon;
+		Events.Gameplay.Eq.OnItemEquiped -= OnItemEquiped;
 	}
 	private void Update () {
 		MovePlayer ();
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour {
 		this.isShoting = isShoting;
 	}
 
-	void SwitchedWeapon () {
+	void OnItemEquiped (Item item, int currentWeaponId) {
 		isShoting = false;
 	}
 	void Reload () {

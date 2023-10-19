@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba1bfeaacb37484dac103287e78995d, type: 3}
   m_Name: Rilfe1
   m_EditorClassIdentifier: 
+  itemName: Fanstastic rilfe
+  itemSprite: {fileID: 21300000, guid: 9d2fda0ca6d8ec449ae6d23a2435eff3, type: 3}
   intendedType: 16
-  weaponName: Fantastic rilfe
   basicDamage: 20
   magazine: 40
   maxAmmountOfBullets: 120

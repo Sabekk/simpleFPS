@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ba1bfeaacb37484dac103287e78995d, type: 3}
   m_Name: Pistol1
   m_EditorClassIdentifier: 
+  itemName: Wood slayer
+  itemSprite: {fileID: 21300000, guid: 9da1a4e2b3fd59547825f9ca1282356f, type: 3}
   intendedType: 1
-  weaponName: Wood slayer
   basicDamage: 15
   magazine: 12
   maxAmmountOfBullets: 48
