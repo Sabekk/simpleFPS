@@ -10,6 +10,13 @@ public class DamagableProp : Target, IDamagable {
 
 	public override bool Markable => durability > 0;
 
+	public float Health {
+		get { return durability; }
+		set { durability = value; }
+	}
+
+	public bool IsAlive => Health > 0;
+
 	private void Awake () {
 		Initialize ();
 
@@ -18,15 +25,15 @@ public class DamagableProp : Target, IDamagable {
 	}
 
 	public void Initialize () {
-		durability = materialData ? materialData.durability : 1;
+		Health = materialData ? materialData.durability : 1;
 	}
 
 	public void TakeDamage (float damage, MaterialData.Type type) {
 		if (type != 0 && (type & MaterialType) == 0)
 			return;
 
-		durability -= damage;
-		if (durability < 0)
+		Health -= damage;
+		if (Health < 0)
 			Kill ();
 	}
 

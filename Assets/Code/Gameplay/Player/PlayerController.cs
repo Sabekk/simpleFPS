@@ -71,8 +71,8 @@ public class PlayerController : MonoBehaviour {
 					if (Physics.Raycast (camera.transform.position, camera.transform.forward + new Vector3 (xSpread, ySpread), out rayHit, CurrentWeapon.AttackRange)) {
 						Target target = rayHit.collider.gameObject.GetComponent<Target> ();
 						if (target != null) {
-							if (target is IDamagable damageable)
-								damageable.TakeDamage (CurrentWeapon.Damage, CurrentWeapon.IntendedType);
+							if (target is IDamagable damagable && damagable.IsAlive)
+								damagable.TakeDamage (CurrentWeapon.Damage, CurrentWeapon.IntendedType);
 							if (target.Markable) {
 								CurrentWeapon.MakeMark (target.MaterialType, rayHit.point, Quaternion.LookRotation (rayHit.normal), out DamageMark mark);
 								if (mark)
