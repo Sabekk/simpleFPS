@@ -6,7 +6,7 @@ public class MeleeWeapon : Weapon {
 	public override Type WeaponType => Type.melee;
 	public override string UsingAnimation => "";
 	public override bool CanBeUsed => durabilityLeft > 0;
-
+	public override float SpecialActionPercentage => 0;
 	float MaxDurability => meleeData.durability;
 
 	public override void Initialize () {

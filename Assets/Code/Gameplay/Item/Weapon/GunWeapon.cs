@@ -17,6 +17,15 @@ public class GunWeapon : Weapon {
 	public string AmmunitionLeft => ammunitionLeft.ToString ();
 	public int MagazineValue => gunData.magazine;
 
+	public override float SpecialActionPercentage {
+		get {
+			if (actualState == State.specialAction) {
+				return timer / gunData.reloadTime;
+			} else
+				return 0;
+		}
+	}
+
 	public override void Initialize () {
 		if (weaponData is GunData gunData) {
 			this.gunData = gunData;
@@ -41,6 +50,7 @@ public class GunWeapon : Weapon {
 			break;
 			case State.specialAction:
 			timer += Time.deltaTime;
+			Events.Gameplay.Weapon.OnUpdateSpecialAction.Invoke (SpecialActionPercentage);
 			if (timer >= gunData.reloadTime) {
 				timer = 0;
 				actualState = State.none;

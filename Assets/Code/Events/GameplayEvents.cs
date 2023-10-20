@@ -67,5 +67,9 @@ public class GameplayEvents {
 		/// Called when player reloading weapon
 		/// </summary>
 		public Events.Event OnReload = new Events.Event ();
+		/// <summary>
+		/// Called for updating current specialAction
+		/// </summary>
+		public Events.Event<float> OnUpdateSpecialAction = new Events.Event<float> ();
 	}
 }

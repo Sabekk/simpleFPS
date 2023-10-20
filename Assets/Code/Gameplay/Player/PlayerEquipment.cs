@@ -67,6 +67,7 @@ public class PlayerEquipment : MonoBehaviour {
 			equipedWeapon.OnUnequip ();
 			ObjectPool.Instance.ReturnToPool (equipedWeapon);
 			equipedWeapon = null;
+			Events.Gameplay.Weapon.OnUpdateSpecialAction.Invoke (-1);
 		}
 	}
 	void SwitchWeapon () {
