@@ -8,7 +8,8 @@ public class DamageMark : PoolableEffect {
 		parent = null;
 	}
 	protected override void OnEffectFinish () {
-		parent.RemoveMark (this);
+		if (parent)
+			parent.RemoveMark (this);
 	}
 	public void SetTargetParent (Target target) {
 		parent = target;

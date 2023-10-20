@@ -18,7 +18,7 @@ MonoBehaviour:
   basicDamage: 15
   timeBetweenAttack: 0.3
   attackRange: 180
-  spread: 0.05
+  spread: 0.015
   attacksPerAction: 1
   aim: aim3
   centalFirstAttack: 1

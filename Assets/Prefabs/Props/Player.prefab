@@ -77,8 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd53188cf00d4e74a8a0e10ef877708e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensX: 300
-  sensY: 300
+  sensX: 200
+  sensY: 200
   playerBody: {fileID: 9094771982643943543}
 --- !u!1 &9094771982643943542
 GameObject:
@@ -160,7 +160,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}

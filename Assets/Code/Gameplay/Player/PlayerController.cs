@@ -78,7 +78,8 @@ public class PlayerController : MonoBehaviour {
 								if (mark)
 									target.AddMark (mark);
 							}
-						}
+						} else if (rayHit.collider != null)
+							CurrentWeapon.MakeMark (MaterialData.Type.iron, rayHit.point, Quaternion.LookRotation (rayHit.normal), out DamageMark mark);
 					}
 				}
 				animator.SetTrigger (CurrentWeapon.UsingAnimation);
