@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 	PlayerEquipment equipment;
 	bool isRuning;
 	bool isShoting;
+	bool centralFirstAttack;
 	Vector2 direction = Vector3.zero;
 	Vector3 moveDirection = Vector3.zero;
 	Vector3 velocity = Vector3.zero;
@@ -61,16 +62,22 @@ public class PlayerController : MonoBehaviour {
 	void TryShoot () {
 		if (isShoting) {
 			if (CurrentWeapon != null && CurrentWeapon.CanBeUsed) {
-				CurrentWeapon.Use ();
-				if (Physics.Raycast (camera.transform.position, camera.transform.forward, out rayHit, CurrentWeapon.AttackRange)) {
-					Target target = rayHit.collider.gameObject.GetComponent<Target> ();
-					if (target != null) {
-						if (target is IDamagable damageable)
-							damageable.TakeDamage (CurrentWeapon.Damage, CurrentWeapon.IntendedType);
-						if (target.Markable) {
-							CurrentWeapon.MakeMark (target.MaterialType, rayHit.point, Quaternion.LookRotation (rayHit.normal), out DamageMark mark);
-							if (mark)
-								target.AddMark (mark);
+				CurrentWeapon.UseVisualisation ();
+				for (int i = 0; i < CurrentWeapon.AttacksCount; i++) {
+					CurrentWeapon.Use ();
+					float xSpread = centralFirstAttack ? 0 : Random.Range (-CurrentWeapon.Spread, CurrentWeapon.Spread);
+					float ySpread = centralFirstAttack ? 0 : Random.Range (-CurrentWeapon.Spread, CurrentWeapon.Spread);
+					centralFirstAttack = false;
+					if (Physics.Raycast (camera.transform.position, camera.transform.forward + new Vector3 (xSpread, ySpread), out rayHit, CurrentWeapon.AttackRange)) {
+						Target target = rayHit.collider.gameObject.GetComponent<Target> ();
+						if (target != null) {
+							if (target is IDamagable damageable)
+								damageable.TakeDamage (CurrentWeapon.Damage, CurrentWeapon.IntendedType);
+							if (target.Markable) {
+								CurrentWeapon.MakeMark (target.MaterialType, rayHit.point, Quaternion.LookRotation (rayHit.normal), out DamageMark mark);
+								if (mark)
+									target.AddMark (mark);
+							}
 						}
 					}
 				}
@@ -95,11 +102,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void Shoting (bool isShoting) {
+		centralFirstAttack = CurrentWeapon ? CurrentWeapon.CentralFirstAttack : true;
 		this.isShoting = isShoting;
 	}
 
 	void OnItemEquiped (Item item, int currentWeaponId) {
-		isShoting = false;
+		Shoting (false);
 	}
 	void Reload () {
 		if (CurrentWeapon != null) {

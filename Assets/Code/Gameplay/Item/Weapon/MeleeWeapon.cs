@@ -21,4 +21,7 @@ public class MeleeWeapon : Weapon {
 	public override void Use () {
 		durabilityLeft--;
 	}
+
+	public override void UseVisualisation () {
+	}
 }

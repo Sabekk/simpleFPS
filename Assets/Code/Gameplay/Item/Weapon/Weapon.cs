@@ -17,7 +17,10 @@ public abstract class Weapon : Item, ObjectPool.IPoolable {
 	public virtual float Damage => weaponData.basicDamage;
 	public virtual float AttackRange => weaponData.attackRange;
 	public virtual float TimeBetweenAttacks => weaponData.timeBetweenAttack;
+	public virtual float Spread => weaponData.spread;
+	public virtual int AttacksCount => weaponData.attacksPerAction;
 	public virtual string Aim => weaponData.aim;
+	public bool CentralFirstAttack => weaponData.centalFirstAttack;
 	public ObjectPool.PoolObject Poolable { get; set; }
 	public State ActualState => actualState;
 
@@ -28,6 +31,7 @@ public abstract class Weapon : Item, ObjectPool.IPoolable {
 	public abstract void Initialize ();
 	public abstract void SetStatistics (Weapon weapon);
 	public abstract void Use ();
+	public abstract void UseVisualisation ();
 	public virtual void Tick () {
 
 	}

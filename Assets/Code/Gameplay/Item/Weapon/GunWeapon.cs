@@ -64,11 +64,12 @@ public class GunWeapon : Weapon {
 
 	public override void Use () {
 		bulletsLeft--;
-		shotParticle.Play ();
 		actualState = State.onUse;
 		Events.UI.ItemPreview.OnRefreshItemPreview.Invoke (this);
 	}
-
+	public override void UseVisualisation () {
+		shotParticle.Play ();
+	}
 	public override void OnUnequip () {
 		base.OnUnequip ();
 		timer = 0;

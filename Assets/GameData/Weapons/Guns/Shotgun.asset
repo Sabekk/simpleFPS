@@ -18,10 +18,10 @@ MonoBehaviour:
   basicDamage: 60
   timeBetweenAttack: 1
   attackRange: 100
+  spread: 0.1
+  attacksPerAction: 3
   aim: aim5
   weaponSize: 2
-  magazine: 6
-  maxAmmountOfBullets: 18
-  bulletsPerShot: 5
-  dispersion: 0.1
+  magazine: 9
+  maxAmmountOfBullets: 27
   reloadTime: 5

@@ -81,7 +81,6 @@ public class PlayerEquipment : MonoBehaviour {
 		} else {
 			EquipWeapon (null);
 		}
-
 	}
 	void SetCurrentWeapon (int id) {
 		currentWeaponId = id;

@@ -6,7 +6,5 @@ public class GunData : WeaponData {
 	public WeaponSize weaponSize;
 	public int magazine;
 	public int maxAmmountOfBullets;
-	public int bulletsPerShot;
-	public float dispersion;
 	public float reloadTime;
 }
