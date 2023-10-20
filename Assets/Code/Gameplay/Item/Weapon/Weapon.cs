@@ -12,10 +12,11 @@ public abstract class Weapon : Item, ObjectPool.IPoolable {
 	public abstract Type WeaponType { get; }
 	public abstract string UsingAnimation { get; }
 	public abstract bool CanBeUsed { get; }
-	public virtual float Damage => weaponData.basicDamage;
 	public virtual MaterialData.Type IntendedType => weaponData.intendedType;
+	public virtual float Damage => weaponData.basicDamage;
 	public virtual float AttackRange => weaponData.attackRange;
 	public virtual float TimeBetweenAttacks => weaponData.timeBetweenAttack;
+	public virtual string Aim => weaponData.aim;
 	public ObjectPool.PoolObject Poolable { get; set; }
 
 	private void Update () {

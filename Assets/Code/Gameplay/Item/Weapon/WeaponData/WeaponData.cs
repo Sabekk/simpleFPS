@@ -7,4 +7,5 @@ public abstract class WeaponData : ItemData {
 	public float basicDamage;
 	public float timeBetweenAttack;
 	public float attackRange;
+	public string aim;
 }

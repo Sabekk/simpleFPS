@@ -18,6 +18,7 @@ MonoBehaviour:
   basicDamage: 15
   timeBetweenAttack: 1
   attackRange: 180
+  aim: aim3
   weaponSize: 0
   magazine: 12
   maxAmmountOfBullets: 48

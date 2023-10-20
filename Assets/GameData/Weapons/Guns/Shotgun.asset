@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   itemName: Stonehenge
-  itemSprite: {fileID: 21300000, guid: f8b7b4d7053d1344f850aeebe9800bd0, type: 3}
+  itemSprite: {fileID: 21300000, guid: b7e4b2350e00837439763843efc5a264, type: 3}
   intendedType: 2
   basicDamage: 60
   timeBetweenAttack: 1
   attackRange: 100
+  aim: aim5
   weaponSize: 2
   magazine: 6
   maxAmmountOfBullets: 18

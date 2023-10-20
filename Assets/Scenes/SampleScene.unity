@@ -193,11 +193,6 @@ Transform:
   m_Father: {fileID: 1660222840}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &281906670 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4867835953020708716, guid: 0f2abcc5a449d44449b360f469e4cafa, type: 3}
-  m_PrefabInstance: {fileID: 9094771982525466200}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &383273476
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,63 +398,6 @@ Transform:
   m_Father: {fileID: 1660222840}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &738128943
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 281906670}
-    m_Modifications:
-    - target: {fileID: 5855586643228379229, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
-      propertyPath: m_Name
-      value: ShotGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 6487692186150638311, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6487692186150638311, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6487692186150638311, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6487692186150638311, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6487692186150638311, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6487692186150638311, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6487692186150638311, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6487692186150638311, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6487692186150638311, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6487692186150638311, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6487692186150638311, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
 --- !u!1001 &1077495763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -715,6 +653,9 @@ MonoBehaviour:
     size: 1
   - name: gunWeapon_rilfe2
     prefab: {fileID: 2336555170174120158, guid: 41b1038c4481a854092ac3410e44f57d, type: 3}
+    size: 1
+  - name: gunWeapon_shotgun
+    prefab: {fileID: 5855586643228379229, guid: c9841888fa5041d499ada59f73087c6a, type: 3}
     size: 1
   - name: shotEffect_gunShot
     prefab: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc, type: 3}
@@ -1088,7 +1029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2935431412981056333, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 70.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2935431412981056333, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1540,7 +1481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8418527755236764236, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 35.375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8418527755236764236, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.y
