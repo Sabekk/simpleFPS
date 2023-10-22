@@ -129,3 +129,4 @@ MonoBehaviour:
     count: 5
     copyScale: 1
     scale: 0
+    randomPosition: 1
