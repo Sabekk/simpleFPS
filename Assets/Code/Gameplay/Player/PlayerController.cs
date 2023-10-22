@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 	PlayerEquipment equipment;
 	bool isRuning;
 	bool isShoting;
+	bool isGrounded;
 	bool centralFirstAttack;
 	Vector2 direction = Vector3.zero;
 	Vector3 moveDirection = Vector3.zero;
@@ -54,8 +55,9 @@ public class PlayerController : MonoBehaviour {
 			moveDirection = transform.right * direction.x + transform.forward * direction.y;
 			characterController.Move (moveDirection * (isRuning ? runSpeed : walkSpeed) * Time.deltaTime);
 		}
-
-		velocity.y -= gravity * Time.deltaTime;
+		isGrounded = Physics.Raycast (transform.position, Vector3.down, characterController.height * 0.5f + 0.2f);
+		if (!isGrounded)
+			velocity.y -= gravity * Time.deltaTime;
 		characterController.Move (velocity * Time.deltaTime);
 	}
 
@@ -89,7 +91,6 @@ public class PlayerController : MonoBehaviour {
 
 
 	void Jump () {
-		bool isGrounded = Physics.Raycast (transform.position, Vector3.down, characterController.height * 0.5f + 0.2f);
 		if (isGrounded)
 			velocity.y = Mathf.Sqrt (jumpPower * gravity);
 	}
