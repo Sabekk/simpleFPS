@@ -12,8 +12,7 @@ public class HealthBarHUD : FadingItemHUD {
 		slider.value = percentage;
 	}
 
-	public override void Dispose () {
-		ObjectPool.Instance.ReturnToPool (this);
+	public override void OnDispose () {
 		Events.UI.SliderPreview.OnSliderRemoved.Invoke (this);
 	}
 }

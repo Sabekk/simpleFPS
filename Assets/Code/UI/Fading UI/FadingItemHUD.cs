@@ -19,9 +19,8 @@ public abstract class FadingItemHUD : MonoBehaviour, ObjectPool.IPoolable {
 		OnUpdate ();
 	}
 
-
 	public virtual void Initiliaze () {
-		transform.localPosition = Vector3.zero;
+		transform.localScale = Vector3.one * 0.01f;
 		timer = liveTime;
 		canvas.alpha = 1;
 	}
@@ -37,7 +36,13 @@ public abstract class FadingItemHUD : MonoBehaviour, ObjectPool.IPoolable {
 		}
 	}
 
-	public abstract void Dispose ();
+	public void Dispose () {
+		ObjectPool.Instance.ReturnToPool (this);
+		OnDispose ();
+	}
+	public virtual void OnDispose () {
+
+	}
 
 	public void AssignPoolable (ObjectPool.PoolObject poolable) {
 		Poolable = poolable;

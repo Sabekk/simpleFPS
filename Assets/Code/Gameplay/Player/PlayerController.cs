@@ -72,12 +72,16 @@ public class PlayerController : MonoBehaviour {
 					if (Physics.Raycast (MainCamera.Instance.Camera.transform.position, MainCamera.Instance.Camera.transform.forward + new Vector3 (xSpread, ySpread), out rayHit, CurrentWeapon.AttackRange)) {
 						Target target = rayHit.collider.gameObject.GetComponent<Target> ();
 						if (target != null) {
-							if (target is IDamagable damagable && damagable.IsAlive)
-								damagable.TakeDamage (CurrentWeapon.Damage, CurrentWeapon.IntendedType);
+							bool isConsistency = target.CheckTypeConsistency (CurrentWeapon.IntendedType);
+							if (target is IDamagable damagable && damagable.IsAlive && isConsistency)
+								damagable.TakeDamage (CurrentWeapon.Damage);
 							if (target.Markable) {
 								CurrentWeapon.MakeMark (target.MaterialType, rayHit.point, Quaternion.LookRotation (rayHit.normal), out DamageMark mark);
 								if (mark)
 									target.AddMark (mark);
+							}
+							if (target.ShowHitValue) {
+								target.ShowHitInformation (isConsistency, CurrentWeapon.Damage, rayHit.point);
 							}
 						} else if (rayHit.collider != null)
 							CurrentWeapon.MakeMark (MaterialData.Type.iron, rayHit.point, Quaternion.LookRotation (rayHit.normal), out DamageMark mark);

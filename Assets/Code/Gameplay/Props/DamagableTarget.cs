@@ -12,6 +12,7 @@ public class DamagableTarget : Target, IDamagable {
 	float durability;
 	public override MaterialData.Type MaterialType => materialData != null ? materialData.type : MaterialData.Type.wood;
 	public override bool Markable => durability > 0;
+	public override bool ShowHitValue => true;
 
 	public float Health {
 		get { return durability; }
@@ -21,7 +22,8 @@ public class DamagableTarget : Target, IDamagable {
 
 	public bool IsAlive => Health > 0;
 
-	const string HEALTH_BAR = "HUD_HealthBar";
+
+	const string HEALTH_BAR = "HUD_healthBar";
 
 
 	private void Awake () {
@@ -45,17 +47,14 @@ public class DamagableTarget : Target, IDamagable {
 		maxDurability = Health;
 	}
 
-	public void TakeDamage (float damage, MaterialData.Type type) {
-		if (type != 0 && (type & MaterialType) == 0)
-			return;
-
+	public void TakeDamage (float damage) {
 		Health -= damage;
 		if (useHealthBar) {
 			if (!healthBar) {
 				healthBar = ObjectPool.Instance.GetFromPool (HEALTH_BAR).GetComponent<HealthBarHUD> ();
-				healthBar.transform.localScale = Vector3.one * 0.01f;
-				healthBar.transform.SetParent (transform);
 				healthBar.Initiliaze ();
+				healthBar.transform.SetParent (transform);
+				healthBar.transform.localPosition = Vector3.zero;
 			}
 
 			healthBar.UpdateStatus (Health / MaxHealth);

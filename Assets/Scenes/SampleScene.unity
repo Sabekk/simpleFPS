@@ -2731,9 +2731,12 @@ MonoBehaviour:
   - name: prop_smallStone
     prefab: {fileID: 7758085153458865193, guid: 19776d4e666345941844a7b7c55e19a3, type: 3}
     size: 1
-  - name: HUD_HealthBar
+  - name: HUD_healthBar
     prefab: {fileID: 1184561215905739285, guid: 5b8150761e67bb04aa74dd206616cf8e, type: 3}
     size: 5
+  - name: HUD_hitInformation
+    prefab: {fileID: 1184561215905739285, guid: 0fae22999b8bfd84e8de9262e73e4c11, type: 3}
+    size: 20
 --- !u!1 &1619942155
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,7 +3645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2935431412981056333, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 70.75
       objectReference: {fileID: 0}
     - target: {fileID: 2935431412981056333, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4094,7 +4097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8418527755236764236, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 35.375
       objectReference: {fileID: 0}
     - target: {fileID: 8418527755236764236, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.y
