@@ -28,7 +28,7 @@ Gamepad na przykładnie Xbox:
  - Prawy analog - ruch kamery/rozglądanie się
  - A - skok
  - X - przeładowanie/akcja specjalna
- - LT - sprint
+ - LB - sprint
  - RT - atak
  - lewa strzałka - poprzedni przedmiot
  - prawa strzałka - następny przedmiot
