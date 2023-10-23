@@ -14,24 +14,24 @@ Użyto:
 Gra obsługuje sterowanie zarówno na klawiaturze jak i gamepadzie
 
 Klawiatura i mysz:
-W - ruch do przodu
-S - ruch do tyłu
-A - ruch w lewo
-D - ruch w prawo
-Spacja - skok
-Lewy shift - sprint
-R - przeładowanie/akcja specjalna
-Prawy przycisk myszy - atak
+ - W - ruch do przodu
+ - S - ruch do tyłu
+ - A - ruch w lewo
+ - D - ruch w prawo
+ - Spacja - skok
+ - Lewy shift - sprint
+ - R - przeładowanie/akcja specjalna
+ - Prawy przycisk myszy - atak
 
 Gamepad na przykładnie Xbox:
-Lewy analog - ruch postaci
-Prawy analog - ruch kamery/rozglądanie się
-A - skok
-X - przeładowanie/akcja specjalna
-LT - sprint
-RT - atak
-lewa strzałka - poprzedni przedmiot
-prawa strzałka - następny przedmiot
+ - Lewy analog - ruch postaci
+ - Prawy analog - ruch kamery/rozglądanie się
+ - A - skok
+ - X - przeładowanie/akcja specjalna
+ - LT - sprint
+ - RT - atak
+ - lewa strzałka - poprzedni przedmiot
+ - prawa strzałka - następny przedmiot
 
 
 # Bronie
