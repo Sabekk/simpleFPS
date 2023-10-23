@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour {
 		Events.Gameplay.Weapon.OnShoting += Shoting;
 		Events.Gameplay.Weapon.OnReload += Reload;
 		Events.Gameplay.Eq.OnItemEquiped += OnItemEquiped;
+		Events.Gameplay.Weapon.OnReloaded += OnReloadFinish;
 
 	}
 	private void OnDestroy () {
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour {
 		Events.Gameplay.Weapon.OnShoting -= Shoting;
 		Events.Gameplay.Weapon.OnReload -= Reload;
 		Events.Gameplay.Eq.OnItemEquiped -= OnItemEquiped;
+		Events.Gameplay.Weapon.OnReloaded -= OnReloadFinish;
 	}
 	private void Update () {
 		MovePlayer ();
@@ -111,14 +113,20 @@ public class PlayerController : MonoBehaviour {
 
 	void OnItemEquiped (Item item, int currentWeaponId) {
 		Shoting (false);
+		animator.Rebind ();
 	}
 	void Reload () {
 		if (CurrentWeapon != null) {
 			if (CurrentWeapon.ActualState != Weapon.State.none)
 				return;
 			isShoting = false;
-			if (CurrentWeapon is GunWeapon gun)
+			if (CurrentWeapon is GunWeapon gun) {
 				gun.StartReload ();
+				animator.SetBool ("Reloading", true);
+			}
 		}
+	}
+	void OnReloadFinish () {
+		animator.SetBool ("Reloading", false);
 	}
 }

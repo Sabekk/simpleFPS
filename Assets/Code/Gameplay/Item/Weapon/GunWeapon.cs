@@ -99,6 +99,7 @@ public class GunWeapon : Weapon {
 		ammunitionLeft -= bulletsCount;
 		bulletsLeft += bulletsCount;
 
+		Events.Gameplay.Weapon.OnReloaded.Invoke ();
 		Events.UI.ItemPreview.OnRefreshItemPreview.Invoke (this);
 	}
 }
