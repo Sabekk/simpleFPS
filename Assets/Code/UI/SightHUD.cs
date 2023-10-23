@@ -8,14 +8,14 @@ public class SightHUD : MonoBehaviour {
 
 	bool inSpecialAction = false;
 	private void Awake () {
-		Events.Gameplay.Eq.OnItemEquiped += OnItemEquiped;
+		Events.Gameplay.Equipment.OnItemEquiped += OnItemEquiped;
 		Events.Gameplay.Weapon.OnUpdateSpecialAction += UpdateActionProgress;
 	}
 	private void Start () {
 		actionTimer.gameObject.SetActive (inSpecialAction);
 	}
 	private void OnDestroy () {
-		Events.Gameplay.Eq.OnItemEquiped -= OnItemEquiped;
+		Events.Gameplay.Equipment.OnItemEquiped -= OnItemEquiped;
 		Events.Gameplay.Weapon.OnUpdateSpecialAction -= UpdateActionProgress;
 	}
 	void OnItemEquiped (Item item, int id) {

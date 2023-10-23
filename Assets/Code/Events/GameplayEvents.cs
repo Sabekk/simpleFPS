@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GameplayEvents {
 	public Moving Move { get; private set; } = new Moving ();
-	public Equipment Eq { get; private set; } = new Equipment ();
+	public Invnentory Equipment { get; private set; } = new Invnentory ();
 	public WeaponAction Weapon { get; private set; } = new WeaponAction ();
 
 	/// <summary>
@@ -29,7 +29,7 @@ public class GameplayEvents {
 	/// <summary>
 	/// Events of player equipment
 	/// </summary>
-	public class Equipment {
+	public class Invnentory {
 		/// <summary>
 		/// Called for initialzie starting weapon
 		/// </summary>

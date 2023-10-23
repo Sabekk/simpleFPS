@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 		Events.Gameplay.Move.OnSprint += Sprint;
 		Events.Gameplay.Weapon.OnShoting += Shoting;
 		Events.Gameplay.Weapon.OnReload += Reload;
-		Events.Gameplay.Eq.OnItemEquiped += OnItemEquiped;
+		Events.Gameplay.Equipment.OnItemEquiped += OnItemEquiped;
 		Events.Gameplay.Weapon.OnReloaded += OnReloadFinish;
 
 	}
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour {
 		Events.Gameplay.Move.OnSprint -= Sprint;
 		Events.Gameplay.Weapon.OnShoting -= Shoting;
 		Events.Gameplay.Weapon.OnReload -= Reload;
-		Events.Gameplay.Eq.OnItemEquiped -= OnItemEquiped;
+		Events.Gameplay.Equipment.OnItemEquiped -= OnItemEquiped;
 		Events.Gameplay.Weapon.OnReloaded -= OnReloadFinish;
 	}
 	private void Update () {
@@ -121,6 +121,8 @@ public class PlayerController : MonoBehaviour {
 				return;
 			isShoting = false;
 			if (CurrentWeapon is GunWeapon gun) {
+				if (!gun.NeedReload)
+					return;
 				gun.StartReload ();
 				animator.SetBool ("Reloading", true);
 			}

@@ -10,12 +10,12 @@ public class FastInventoryHUD : MonoBehaviour {
 			slot.slot.Initialize ();
 		}
 
-		Events.Gameplay.Eq.OnAddedNewWeapon += OnAddedNewWeapon;
-		Events.Gameplay.Eq.OnItemEquiped += OnItemEquiped;
+		Events.Gameplay.Equipment.OnAddedNewWeapon += OnAddedNewWeapon;
+		Events.Gameplay.Equipment.OnItemEquiped += OnItemEquiped;
 	}
 	private void OnDestroy () {
-		Events.Gameplay.Eq.OnAddedNewWeapon -= OnAddedNewWeapon;
-		Events.Gameplay.Eq.OnItemEquiped -= OnItemEquiped;
+		Events.Gameplay.Equipment.OnAddedNewWeapon -= OnAddedNewWeapon;
+		Events.Gameplay.Equipment.OnItemEquiped -= OnItemEquiped;
 	}
 	void OnAddedNewWeapon (Weapon weapon, int id) {
 		foreach (var slot in slots) {

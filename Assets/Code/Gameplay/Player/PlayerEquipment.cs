@@ -12,17 +12,17 @@ public class PlayerEquipment : MonoBehaviour {
 
 	private void Awake () {
 		weapons = new Dictionary<int, Weapon> ();
-		Events.Gameplay.Eq.OnInitializeStartingWeapon += AddWeapon;
-		Events.Gameplay.Eq.OnSwitchWeapon += SetCurrentWeapon;
-		Events.Gameplay.Eq.OnSwitchToNextWeapon += SwitchToNextWeapon;
-		Events.Gameplay.Eq.OnSwitchToPreviousWeapon += SwitchToPreviousWeapon;
+		Events.Gameplay.Equipment.OnInitializeStartingWeapon += AddWeapon;
+		Events.Gameplay.Equipment.OnSwitchWeapon += SetCurrentWeapon;
+		Events.Gameplay.Equipment.OnSwitchToNextWeapon += SwitchToNextWeapon;
+		Events.Gameplay.Equipment.OnSwitchToPreviousWeapon += SwitchToPreviousWeapon;
 	}
 
 	private void OnDestroy () {
-		Events.Gameplay.Eq.OnInitializeStartingWeapon -= AddWeapon;
-		Events.Gameplay.Eq.OnSwitchWeapon -= SetCurrentWeapon;
-		Events.Gameplay.Eq.OnSwitchToNextWeapon -= SwitchToNextWeapon;
-		Events.Gameplay.Eq.OnSwitchToPreviousWeapon -= SwitchToPreviousWeapon;
+		Events.Gameplay.Equipment.OnInitializeStartingWeapon -= AddWeapon;
+		Events.Gameplay.Equipment.OnSwitchWeapon -= SetCurrentWeapon;
+		Events.Gameplay.Equipment.OnSwitchToNextWeapon -= SwitchToNextWeapon;
+		Events.Gameplay.Equipment.OnSwitchToPreviousWeapon -= SwitchToPreviousWeapon;
 	}
 	bool CanAddNewWeapon (out int emptyId) {
 		for (int i = 0; i < maxWeapons; i++) {
@@ -45,7 +45,7 @@ public class PlayerEquipment : MonoBehaviour {
 				currentWeaponId = emptySlot;
 			} else
 				ObjectPool.Instance.ReturnToPool (weapon);
-			Events.Gameplay.Eq.OnAddedNewWeapon.Invoke (weapon, emptySlot);
+			Events.Gameplay.Equipment.OnAddedNewWeapon.Invoke (weapon, emptySlot);
 		}
 	}
 	void RemoveWeapon (Weapon weapon) {
@@ -58,7 +58,7 @@ public class PlayerEquipment : MonoBehaviour {
 			equipedWeapon.transform.SetParent (handle);
 			equipedWeapon.OnEquip ();
 		}
-		Events.Gameplay.Eq.OnItemEquiped.Invoke (weapon, currentWeaponId);
+		Events.Gameplay.Equipment.OnItemEquiped.Invoke (weapon, currentWeaponId);
 		Events.UI.ItemPreview.OnRefreshItemPreview.Invoke (weapon);
 	}
 	void UnequipWeapon () {

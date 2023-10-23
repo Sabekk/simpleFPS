@@ -48,37 +48,37 @@ public class InputController : MonoBehaviour, InputBinds.IPlayerActions {
 
 	public void OnWeapon1 (InputAction.CallbackContext context) {
 		if (context.started)
-			Events.Gameplay.Eq.OnSwitchWeapon.Invoke (0);
+			Events.Gameplay.Equipment.OnSwitchWeapon.Invoke (0);
 	}
 
 	public void OnWeapon2 (InputAction.CallbackContext context) {
 		if (context.started)
-			Events.Gameplay.Eq.OnSwitchWeapon.Invoke (1);
+			Events.Gameplay.Equipment.OnSwitchWeapon.Invoke (1);
 	}
 
 	public void OnWeapon3 (InputAction.CallbackContext context) {
 		if (context.started)
-			Events.Gameplay.Eq.OnSwitchWeapon.Invoke (2);
+			Events.Gameplay.Equipment.OnSwitchWeapon.Invoke (2);
 	}
 
 	public void OnWeapon4 (InputAction.CallbackContext context) {
 		if (context.started)
-			Events.Gameplay.Eq.OnSwitchWeapon.Invoke (3);
+			Events.Gameplay.Equipment.OnSwitchWeapon.Invoke (3);
 	}
 
 	public void OnWeapon5 (InputAction.CallbackContext context) {
 		if (context.started)
-			Events.Gameplay.Eq.OnSwitchWeapon.Invoke (4);
+			Events.Gameplay.Equipment.OnSwitchWeapon.Invoke (4);
 	}
 
 	public void OnNextWeapon (InputAction.CallbackContext context) {
 		if (context.started)
-			Events.Gameplay.Eq.OnSwitchToNextWeapon.Invoke ();
+			Events.Gameplay.Equipment.OnSwitchToNextWeapon.Invoke ();
 	}
 
 	public void OnPreviousWeapon (InputAction.CallbackContext context) {
 		if (context.started)
-			Events.Gameplay.Eq.OnSwitchToPreviousWeapon.Invoke ();
+			Events.Gameplay.Equipment.OnSwitchToPreviousWeapon.Invoke ();
 	}
 
 	public void OnShot (InputAction.CallbackContext context) {

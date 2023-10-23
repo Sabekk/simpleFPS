@@ -16,6 +16,7 @@ public class GunWeapon : Weapon {
 	public string Magazine => gunData.magazine.ToString ();
 	public string AmmunitionLeft => ammunitionLeft.ToString ();
 	public int MagazineValue => gunData.magazine;
+	public bool NeedReload => bulletsLeft < MagazineValue;
 
 	public override float SpecialActionPercentage {
 		get {
