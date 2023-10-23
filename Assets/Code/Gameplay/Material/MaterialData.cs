@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu (fileName = "Material", menuName = "Item/Material")]
@@ -12,6 +10,9 @@ public class MaterialData : ScriptableObject {
 		iron = 8,
 		sand = 16
 	}
+
+	[Tooltip ("Material type")]
 	public Type type;
+	[Tooltip ("Maximal health of material")]
 	public float durability;
 }

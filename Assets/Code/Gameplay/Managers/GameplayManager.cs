@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class GameplayManager : Singleton<GameplayManager> {
 	public static string GetPropMarkName (Weapon.Type weaponType, MaterialData.Type materialType) {
 		switch (weaponType) {

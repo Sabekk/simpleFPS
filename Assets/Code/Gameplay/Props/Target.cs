@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +24,7 @@ public abstract class Target : MonoBehaviour {
 	public void ShowHitInformation (bool isConsistency, float damageValue, Vector3 position) {
 		HitDamageInformationHUD hitInformation = ObjectPool.Instance.GetFromPool (HIT_INFORMATION).GetComponent<HitDamageInformationHUD> ();
 		hitInformation.Initiliaze ();
-		hitInformation.SetValue (isConsistency ? damageValue.ToString () : "x");
+		hitInformation.SetValue (isConsistency ? damageValue.ToString () : "0");
 		hitInformation.transform.position = position;
 	}
 

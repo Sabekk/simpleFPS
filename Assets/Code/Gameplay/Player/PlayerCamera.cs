@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
@@ -12,10 +10,10 @@ public class PlayerCamera : MonoBehaviour
     float yDir;
     float xRotation;
 	private void Awake () {
-        Events.Gameplay.Move.OnLookInDirection += LooknDirection;
+        Events.Gameplay.Move.OnLookInDirection += LookInDirection;
     }
 	private void OnDestroy () {
-        Events.Gameplay.Move.OnLookInDirection -= LooknDirection;
+        Events.Gameplay.Move.OnLookInDirection -= LookInDirection;
     }
 	private void Start () {
         Cursor.lockState = CursorLockMode.Locked;
@@ -34,7 +32,7 @@ public class PlayerCamera : MonoBehaviour
         playerBody.Rotate (Vector3.up * mouseX);
 	}
 
-    void LooknDirection(Vector2 direction) {
+    void LookInDirection(Vector2 direction) {
         xDir = direction.x;
         yDir = direction.y;
 	}

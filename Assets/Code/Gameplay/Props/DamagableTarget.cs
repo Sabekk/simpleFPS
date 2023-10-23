@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,10 +18,7 @@ public class DamagableTarget : Target, IDamagable {
 		set { durability = value; }
 	}
 	public float MaxHealth => maxDurability;
-
 	public bool IsAlive => Health > 0;
-
-
 	const string HEALTH_BAR = "HUD_healthBar";
 
 
