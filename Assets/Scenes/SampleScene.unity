@@ -2710,11 +2710,8 @@ MonoBehaviour:
   - name: effect_explode
     prefab: {fileID: 1828176872806910, guid: 64891a0eb28db934898420d80ca07cb3, type: 3}
     size: 5
-  - name: prop_brokenJugTop
-    prefab: {fileID: 6390459861637009067, guid: 6217a840ef7b5da40bc3c9075de53ea4, type: 3}
-    size: 1
-  - name: prop_brokenJugBottom
-    prefab: {fileID: 9176750236434140590, guid: 913a7c559afba3e4b904814a31557cca, type: 3}
+  - name: prop_brokenJug
+    prefab: {fileID: 8110029585671098622, guid: 411765f8ad87b9d478d7f85008f0d2d3, type: 3}
     size: 1
   - name: prop_desk
     prefab: {fileID: 8903053469164024846, guid: 41a2edecaedc0bb4e8c1ad3055928721, type: 3}
@@ -2731,6 +2728,12 @@ MonoBehaviour:
   - name: prop_bottleBlue
     prefab: {fileID: 4742420181833836513, guid: dce278a18cc98aa41a4185c95e564f6f, type: 3}
     size: 1
+  - name: prop_smallStone
+    prefab: {fileID: 7758085153458865193, guid: 19776d4e666345941844a7b7c55e19a3, type: 3}
+    size: 1
+  - name: HUD_HealthBar
+    prefab: {fileID: 1184561215905739285, guid: 5b8150761e67bb04aa74dd206616cf8e, type: 3}
+    size: 5
 --- !u!1 &1619942155
 GameObject:
   m_ObjectHideFlags: 0
@@ -3128,19 +3131,27 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
+      propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 98066703}
+      objectReference: {fileID: 1591024808}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1591024808}
+      objectReference: {fileID: 98066703}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
+      propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
@@ -3157,6 +3168,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DamagableProp, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
+      propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: DamagableProp, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
@@ -3627,7 +3642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2935431412981056333, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 70.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2935431412981056333, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4079,7 +4094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8418527755236764236, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 35.375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8418527755236764236, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.y

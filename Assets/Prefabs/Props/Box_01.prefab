@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialData: {fileID: 11400000, guid: c0e351caa81ad5740824e4b268051fb2, type: 2}
+  useHealtBar: 1
 --- !u!33 &4256382536191118056
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -143,11 +144,14 @@ MonoBehaviour:
     count: 1
     copyScale: 0
     scale: 3
+    randomPosition: 0
   - name: prop_bottleGreen
     count: 1
     copyScale: 0
     scale: 3
+    randomPosition: 0
   - name: prop_bottleBlue
     count: 1
     copyScale: 0
     scale: 3
+    randomPosition: 0

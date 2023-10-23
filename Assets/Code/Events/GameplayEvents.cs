@@ -72,4 +72,5 @@ public class GameplayEvents {
 		/// </summary>
 		public Events.Event<float> OnUpdateSpecialAction = new Events.Event<float> ();
 	}
+
 }

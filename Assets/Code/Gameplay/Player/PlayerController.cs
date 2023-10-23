@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent (typeof (CharacterController))]
 public class PlayerController : MonoBehaviour {
 
-	[SerializeField] Camera camera;
 	[SerializeField] float walkSpeed;
 	[SerializeField] float runSpeed;
 	[SerializeField] float jumpPower;
@@ -70,7 +69,7 @@ public class PlayerController : MonoBehaviour {
 					float xSpread = centralFirstAttack ? 0 : Random.Range (-CurrentWeapon.Spread, CurrentWeapon.Spread);
 					float ySpread = centralFirstAttack ? 0 : Random.Range (-CurrentWeapon.Spread, CurrentWeapon.Spread);
 					centralFirstAttack = false;
-					if (Physics.Raycast (camera.transform.position, camera.transform.forward + new Vector3 (xSpread, ySpread), out rayHit, CurrentWeapon.AttackRange)) {
+					if (Physics.Raycast (MainCamera.Instance.Camera.transform.position, MainCamera.Instance.Camera.transform.forward + new Vector3 (xSpread, ySpread), out rayHit, CurrentWeapon.AttackRange)) {
 						Target target = rayHit.collider.gameObject.GetComponent<Target> ();
 						if (target != null) {
 							if (target is IDamagable damagable && damagable.IsAlive)

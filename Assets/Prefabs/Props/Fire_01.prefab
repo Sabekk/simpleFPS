@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialData: {fileID: 11400000, guid: 4740426f47e74134f94149b26cff5b49, type: 2}
+  useHealtBar: 1
 --- !u!33 &2297614027480751152
 MeshFilter:
   m_ObjectHideFlags: 0
