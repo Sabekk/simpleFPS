@@ -489,7 +489,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -506,7 +506,7 @@ PrefabInstance:
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1591024808}
+      objectReference: {fileID: 1380952701}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -533,11 +533,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DamagableProp, Assembly-CSharp
+      value: DamagableTarget, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: DamagableProp, Assembly-CSharp
+      value: DamagableTarget, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2143,6 +2143,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6981021406093221523, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
   m_PrefabInstance: {fileID: 1926349122}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1380952701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5597932429196777890, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
+  m_PrefabInstance: {fileID: 1926349122}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea6ea2de5bbaedd43b1dc82c8a92594c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1399955491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2501,7 +2512,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2514,7 +2525,7 @@ PrefabInstance:
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 98066703}
+      objectReference: {fileID: 1380952701}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2537,11 +2548,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DamagableProp, Assembly-CSharp
+      value: DamagableTarget, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: DamagableProp, Assembly-CSharp
+      value: DamagableTarget, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6269404540334790194, guid: 89a32941865132c4ba1c2782790ed46b, type: 3}
       propertyPath: impactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -3649,7 +3660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2935431412981056333, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 70.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2935431412981056333, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4101,7 +4112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8418527755236764236, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 35.375
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8418527755236764236, guid: 6b96660e03196ea4f833cc3bc064c1ea, type: 3}
       propertyPath: m_AnchoredPosition.y

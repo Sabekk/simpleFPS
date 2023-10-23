@@ -21,6 +21,7 @@ public class DamagableTarget : Target, IDamagable {
 	public bool IsAlive => Health > 0;
 	const string HEALTH_BAR = "HUD_healthBar";
 
+	bool isKilled;
 
 	private void Awake () {
 		Initialize ();
@@ -28,12 +29,14 @@ public class DamagableTarget : Target, IDamagable {
 		actions = new List<ActionAfterDeath> ();
 		actions.AddRange (GetComponents<ActionAfterDeath> ());
 		Events.UI.SliderPreview.OnSliderRemoved += OnSliderRemoved;
+		isKilled = !IsAlive;
 	}
 
 	void OnKill () {
 		ReturnAllMarks ();
 		foreach (var action in actions)
 			action.Activate ();
+
 		if (useHealthBar && healthBar)
 			healthBar.Dispose ();
 		Events.UI.SliderPreview.OnSliderRemoved -= OnSliderRemoved;
@@ -56,13 +59,16 @@ public class DamagableTarget : Target, IDamagable {
 			healthBar.UpdateStatus (Health / MaxHealth);
 		}
 
-		if (Health < 0)
+		if (Health <= 0)
 			Kill ();
 	}
 
 	public void Kill () {
-		OnKill ();
-		Destroy (gameObject);
+		if (!isKilled) {
+			isKilled = true;
+			OnKill ();
+			Destroy (gameObject);
+		}
 	}
 	void OnSliderRemoved (HealthBarHUD healthBar) {
 		if (this.healthBar == healthBar)
