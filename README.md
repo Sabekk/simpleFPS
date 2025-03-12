@@ -2,67 +2,67 @@
 
 Unity version: 2021.3.5f1
 
-Prosty fps z możliwością używania broni
+Simple fps with the ability to use weapons
 
-Użyto:
- - ScritableObjects
- - Object pooling
- - Eventy
- - Player input
+Used:
+- ScritableObjects
+- Object pooling
+- Events
+- Player input
 
-# Sterowanie
-Gra obsługuje sterowanie zarówno na klawiaturze jak i gamepadzie
+# Control
+The game supports both keyboard and gamepad controls
 
-Klawiatura i mysz:
- - W - ruch do przodu
- - S - ruch do tyłu
- - A - ruch w lewo
- - D - ruch w prawo
- - Spacja - skok
- - Lewy shift - sprint
- - R - przeładowanie/akcja specjalna
- - Prawy przycisk myszy - atak
+Keyboard and mouse:
+- W - move forward
+- S - move backward
+- A - move left
+- D - move right
+- Space - jump
+- Left shift - sprint
+- R - reload/special action
+- Right mouse button - attack
 
-Gamepad na przykładnie Xbox:
- - Lewy analog - ruch postaci
- - Prawy analog - ruch kamery/rozglądanie się
- - A - skok
- - X - przeładowanie/akcja specjalna
- - LB - sprint
- - RT - atak
- - lewa strzałka - poprzedni przedmiot
- - prawa strzałka - następny przedmiot
-
-
-# Bronie
-Bronie maja swoje odpowiednie cechy takie jak obrażenia, czas przeładowania, rozrzut, ilość amunicji czy wielkość magazynku. Bronie również mają określony rodzaj materiału na który mają wpływ. Implementacja ustawiania broni jest łatwa do rozszerzenia o na przykład bronie do walki w zwarciu.
+Gamepad for example Xbox:
+- Left analog - character movement
+- Right analog - camera movement/look around
+- A - jump
+- X - reload/special action
+- LB - sprint
+- RT - attack
+- left arrow - previous item
+- right arrow - next item
 
 
-# Przedmioty
-Każdy obiekt na mapie reaguje na pociski broni. Obiekty dzielą sie na otrzymujące obrażenia oraz te które pełnią jedynie rolę tła bez możliwości ich zniszczenia. Każdy z przedmiotów o ustawionym materiale odpowiednio zasygnalizuje miejsce otrzymania ciosu/strzału poprzez system particli. Jeżeli obiekt nie posiada na sobie informacji o materiale jest traktowany jakby był zrobiony z metalu jedynie dla wizualizacji.
+# Weapons
+Weapons have their own characteristics such as damage, reload time, spread, ammo count, and magazine size. Weapons also have a specific type of material they affect. The implementation of weapon positioning is easy to extend to melee weapons, for example.
+
+
+# Items
+Each object on the map reacts to weapon bullets. Objects are divided into those that take damage and those that serve only as background elements without the possibility of being destroyed. Each object with an assigned material will appropriately indicate the point of impact through the particle system. If an object lacks material information, it is treated as if it were made of metal for visualization purposes
 ![image](https://github.com/Sabekk/simpleFPS/assets/5255050/97dca146-9a5f-4218-80b4-5620b2b7ee8c)
 
 ![image](https://github.com/Sabekk/simpleFPS/assets/5255050/451bfeed-6f59-44fc-b1aa-9ded16bcda45)
 
 
-Przedmioty reagujące na obrażenia na koniec swojego życia wywołują dodane do obiektu akcje.
-Obecnie zaimplementowane akcje:
- - efekt wizualny
- - zamiana obiektu
- - wpływ na podpięty obiekt
+Items that react to damage at the end of their life trigger actions added to the object.
+Currently implemented actions:
+- visual effect
+- object replacement
+- influence on the attached object
 
-Efekty mogą się ze sobą łączyć
+Effects can be combined with each other
 ![image](https://github.com/Sabekk/simpleFPS/assets/5255050/73377536-016b-4e9c-b2a2-7011bb9e5a8b)
 
 
 # UI
 
-Użytkownik jest informowany o obecnym statusie broni oraz aktualnie wyposażonego przedmiotu poprzez zawsze widoczny HUD
+The user is informed about the current status of the weapon and the currently equipped item via an always visible HUD
 ![image](https://github.com/Sabekk/simpleFPS/assets/5255050/ca720106-d962-49f0-a8d0-5716992a87c2)
 
-Po trafieniu w obiekt reagujący na obrażenia gracz jest informowany o zadanych obrażeniach oraz o aktualnym statusie przedmiotu
+After hitting an object that reacts to damage, the player is informed about the damage done and the current status of the item
 ![image](https://github.com/Sabekk/simpleFPS/assets/5255050/74e3b0cf-303e-4ba3-823d-e86a61932e51)
 
-Jeżeli broń trzymana przez gracza nie ma wpływu na atakowany przedmiot gracz również jest o tym informowany komuniaktem
+If the weapon held by the player has no effect on the attacked item, the player is also informed about it with a message
 ![image](https://github.com/Sabekk/simpleFPS/assets/5255050/587cf4e8-0417-4eb7-9670-879b7f8220e7)
 
